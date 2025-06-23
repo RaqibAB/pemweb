@@ -1,0 +1,22 @@
+# Lingkungan dan file sensitif
+/.env
+
+# Folder-folder yang dihasilkan oleh Composer dan sistem
+/vendor
+/writable
+/builds
+
+# File log dan cache
+writable/logs/*.log
+writable/cache/*
+
+# File sistem operasi
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# File dari IDE
+.idea
+.vscode
+*.sublime-project
+*.sublime-workspace
