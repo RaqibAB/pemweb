@@ -15,13 +15,29 @@ class KategoriController extends Controller
 
     // Menampilkan daftar semua kategori
     public function index()
-    {
-        $data = [
-            'title' => 'Data Kategori Buku',
-            'kategori' => $this->kategoriModel->findAll()
-        ];
-        return view('App\Modules\Kategori\Views\index', $data);
+{
+    $keyword = $this->request->getVar('keyword');
+
+    if ($keyword) {
+        $kategoriQuery = $this->kategoriModel->like('nama_kategori', $keyword);
+    } else {
+        $kategoriQuery = $this->kategoriModel;
     }
+
+    // Terapkan paginasi dengan 8 data per halaman
+    $kategori = $kategoriQuery->paginate(8, 'kategori');
+
+    $data = [
+        'title'    => 'Data Kategori Buku',
+        'kategori' => $kategori,
+        'pager'    => $this->kategoriModel->pager,
+        'keyword'  => $keyword,
+        // Menghitung nomor urut agar berlanjut di halaman berikutnya
+        'nomor'    => ($this->request->getVar('page_kategori') ? $this->request->getVar('page_kategori') : 1 - 1) * 8 + 1
+    ];
+
+    return view('App\Modules\Kategori\Views\index', $data);
+}
 
     // Menampilkan form tambah kategori
     public function new()

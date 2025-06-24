@@ -18,7 +18,7 @@ class BukuController extends Controller
     public function index()
     {
         $keyword = $this->request->getVar('keyword');
-        $buku = $this->bukuModel->getBuku($keyword)->paginate(5, 'buku');
+        $buku = $this->bukuModel->getBuku($keyword)->paginate(8, 'buku');
 
         $data = [
             'title' => 'Data Buku',
