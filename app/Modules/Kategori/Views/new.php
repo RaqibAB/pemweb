@@ -10,7 +10,7 @@
 </div>
 
 <div class="col-lg-6">
-    <form action="/kategori/create" method="post">
+    <form action="<?=site_url('kategori/create'); ?>" method="post">
         <?= csrf_field() ?>
         <div class="mb-3">
             <label for="nama_kategori" class="form-label">Nama Kategori</label>
@@ -21,7 +21,7 @@
         </div>
         
         <button type="submit" class="btn btn-primary">Simpan</button>
-        <a href="/kategori" class="btn btn-secondary">Kembali</a>
+        <a href="<?=site_url('kategori'); ?>" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
 <?= $this->endSection() ?>

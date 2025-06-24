@@ -1,42 +1,57 @@
-<div class="position-sticky pt-3">
-    <ul class="nav flex-column">
-        <li class="nav-item">
-            <a class="nav-link" href="/dashboard">
-                <i class="bi bi-house-door"></i>
-                Dashboard
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/buku">
-                <i class="bi bi-book"></i>
-                Data Buku
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/kategori">
-                <i class="bi bi-tags"></i>
-                Data Kategori
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="bi bi-arrow-down-up"></i>
-                Data Peminjaman
-            </a>
-        </li>
-    </ul>
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <?php if(session()->get('user_role') === 'admin'): ?>
-    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-        <span>ADMINISTRATOR</span>
-    </h6>
-    <ul class="nav flex-column mb-2">
-        <li class="nav-item">
-            <a class="nav-link" href="/users">
-                <i class="bi bi-people"></i>
-                Manajemen User
-            </a>
-        </li>
-    </ul>
-    <?php endif; ?>
-</div>
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= site_url('dashboard') ?>">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-book-open"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Perpus Digital</div>
+    </a>
+
+    <hr class="sidebar-divider my-0">
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= site_url('dashboard') ?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+        Master Data
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= site_url('buku') ?>">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Data Buku</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= site_url('kategori') ?>">
+            <i class="fas fa-fw fa-tags"></i>
+            <span>Data Kategori</span>
+        </a>
+    </li>
+    
+
+     <hr class="sidebar-divider">
+    
+    <div class="sidebar-heading">
+        Administrasi
+    </div>
+
+     <li class="nav-item">
+        <a class="nav-link" href="<?= site_url('user') ?>">
+            <i class="fas fa-fw fa-user-cog"></i>
+            <span>Manajemen User</span>
+        </a>
+    </li>
+
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>

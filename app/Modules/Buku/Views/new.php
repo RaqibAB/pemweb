@@ -48,7 +48,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Tambah Data</button>
-        <a href="/buku" class="btn btn-secondary">Kembali</a>
+        <a href="<?= site_url('buku/'); ?>" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
 <?= $this->endSection() ?>

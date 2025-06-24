@@ -47,12 +47,12 @@
                     <td><?= $b['pengarang']; ?></td>
                     <td><?= $b['jumlah_stok']; ?></td>
                     <td>
-                        <a href="/uas/public/index.php/buku/edit/<?= $b['id_buku']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="/buku/delete/<?= $b['id_buku']; ?>" method="post" class="d-inline">
-                            <?= csrf_field(); ?>
+                        <a href="/uas/public/index.php/buku/edit/<?= $b['id_buku']; ?>"
+                            class="btn btn-warning btn-sm">Edit</a>
+                        <form action="<?= site_url('buku/' . $b['id_buku']); ?>" method="post" class="d-inline">
+                            <?= csrf_field() ?>
                             <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="btn btn-danger btn-sm"
-                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                         </form>
                     </td>
                 </tr>

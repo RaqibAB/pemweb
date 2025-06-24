@@ -10,9 +10,8 @@
 </div>
 
 <div class="col-lg-6">
-    <form action="/kategori/update/<?= $kategori['id_kategori']; ?>" method="post">
+    <form action="<?= site_url('kategori/update/').$kategori['id_kategori']; ?>" method="post">
         <?= csrf_field() ?>
-        <input type="hidden" name="_method" value="PUT">
         <div class="mb-3">
             <label for="nama_kategori" class="form-label">Nama Kategori</label>
             <input type="text" class="form-control <?= ($validation->hasError('nama_kategori')) ? 'is-invalid' : ''; ?>" id="nama_kategori" name="nama_kategori" value="<?= old('nama_kategori', $kategori['nama_kategori']) ?>" autofocus>
@@ -22,7 +21,7 @@
         </div>
         
         <button type="submit" class="btn btn-primary">Ubah</button>
-        <a href="/kategori" class="btn btn-secondary">Kembali</a>
+        <a href="<?=site_url('kategori'); ?>" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
 <?= $this->endSection() ?>

@@ -12,7 +12,6 @@
 <div class="col-lg-8">
     <form action="<?= site_url('buku/update/' . $buku['id_buku']); ?>" method="post">
         <?= csrf_field() ?>
-        <input type="hidden" name="_method" value="PUT">
         <div class="mb-3">
             <label for="judul_buku" class="form-label">Judul Buku</label>
             <input type="text" class="form-control" id="judul_buku" name="judul_buku"

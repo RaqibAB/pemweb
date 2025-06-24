@@ -1,78 +1,70 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?= $this->renderSection('title') ?> | PerpusDigital</title>
-    <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
-    <style>
-        .sidebar {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 100;
-            padding: 48px 0 0;
-            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-        }
 
-        .main-content {
-            margin-left: 240px;
-            /* same as sidebar width */
-            padding: 20px;
-        }
-    </style>
+    <link href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <link href="<?= base_url('assets/css/sb-admin-2.min.css') ?>" rel="stylesheet">
+    
+    <link href="<?= base_url('assets/vendor/datatables/dataTables.bootstrap4.min.css') ?>" rel="stylesheet">
+
 </head>
 
-<body>
+<body id="page-top">
+    <div id="wrapper">
+        <?= $this->include('layout/sidebar') ?>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <?= $this->include('layout/navbar') ?>
+                <div class="container-fluid">
+                    
+                    <?php if (session()->getFlashdata('pesan')) : ?>
+                        <div class="alert alert-success" role="alert">
+                            <?= session()->getFlashdata('pesan'); ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (session()->getFlashdata('error')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?= session()->getFlashdata('error'); ?>
+                        </div>
+                    <?php endif; ?>
 
-    <?php if (session()->get('isLoggedIn')): ?>
-        <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-            <div class="position-sticky pt-3">
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>ADMIN</span>
-                </h6>
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= site_url('dashboard') ?>">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= site_url('buku') ?>">Data Buku</a>
-                    </li>
-                    <li class="nav-item">
-                         <a class="nav-link" href="<?= site_url('kategori') ?>">Data Kategori</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Data Anggota</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Transaksi</a>
-                    </li>
-                </ul>
-                <hr>
-                <ul class="nav flex-column mb-2">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= site_url('logout') ?>">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    <?php endif; ?>
+                    <?= $this->renderSection('content') ?>
 
-    <main class="<?= session()->get('isLoggedIn') ? 'main-content' : '' ?>">
-        <div class="container-fluid">
-            <?php if (session()->getFlashdata('pesan')): ?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <?= session()->getFlashdata('pesan'); ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-            <?php endif; ?>
-            <?= $this->renderSection('content') ?>
+                </div>
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; PerpusDigital <?= date('Y'); ?></span>
+                    </div>
+                </div>
+            </footer>
+            </div>
         </div>
-    </main>
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-    <script src="<?= base_url('assets/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?= base_url('assets/vendor/jquery/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+
+    <script src="<?= base_url('assets/vendor/jquery-easing/jquery.easing.min.js') ?>"></script>
+
+    <script src="<?= base_url('assets/js/sb-admin-2.min.js') ?>"></script>
+    
+    <script src="<?= base_url('assets/vendor/datatables/jquery.dataTables.min.js') ?>"></script>
+    <script src="<?= base_url('assets/vendor/datatables/dataTables.bootstrap4.min.js') ?>"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable(); // Inisialisasi DataTables
+        });
+    </script>
 </body>
-
 </html>

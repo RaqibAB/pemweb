@@ -13,8 +13,7 @@ class DashboardController extends Controller
             'title' => 'Dashboard',
             'total_buku' => $db->table('buku')->countAllResults(),
             'total_kategori' => $db->table('kategori')->countAllResults(),
-            'total_anggota' => $db->table('anggota')->countAllResults(),
-            'total_pinjam' => $db->table('transaksi')->where('status', 'Dipinjam')->countAllResults()
+            'total_users' => $db->table('users')->countAllResults(),
         ];
         return view('App\Modules\Dashboard\Views\index', $data);
     }
